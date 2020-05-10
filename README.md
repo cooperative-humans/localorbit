@@ -1,6 +1,6 @@
 # Local Orbit
 
-[![CircleCI](https://circleci.com/gh/LocalOrbit/localorbit/tree/master.svg?style=svg)](https://circleci.com/gh/LocalOrbit/localorbit/tree/master)
+[![CircleCI](https://circleci.com/gh/cooperative-humans/localorbit/tree/master.svg?style=svg)](https://circleci.com/gh/cooperative-humans/localorbit/tree/master)
 
 * **[Staging Deploy (Preview)](https://github.com/LocalOrbit/localorbit/compare/staging...master)**
 * **[Production Deploy (Preview)](https://github.com/LocalOrbit/localorbit/compare/production...staging)**
