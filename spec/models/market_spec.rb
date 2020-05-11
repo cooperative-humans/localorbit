@@ -355,22 +355,22 @@ describe Market do
     let(:market_other_fees_none) { create(:market, credit_card_market_fee:1, credit_card_seller_fee:0, local_orbit_seller_fee:2, market_seller_fee:1, payment_provider:'stripe')} # todo maths
 
     it "results correctly with zeroes" do
-      expect(market.seller_net_percent).to eq(BigDecimal.new("1.00"))
+      expect(market.seller_net_percent).to eq(BigDecimal("1.00"))
     end
 
     it "uses payment processing correctly" do
-      expect(market_cc_fees.seller_net_percent).to eq(BigDecimal.new("1.00")-BigDecimal.new("0.029"))
+      expect(market_cc_fees.seller_net_percent).to eq(BigDecimal("1.00")-BigDecimal("0.029"))
     end
 
     it "uses appropriate seller CC fees, given correct payment processing" do
-      expect(market_other_fees_seller.seller_net_percent).to eq(BigDecimal.new("1.00")-BigDecimal.new("0.029")-BigDecimal.new("0.03"))
-      expect(market_other_fees_none.seller_net_percent).to eq(BigDecimal.new("1.00")-BigDecimal.new("0.03"))
+      expect(market_other_fees_seller.seller_net_percent).to eq(BigDecimal("1.00")-BigDecimal("0.029")-BigDecimal("0.03"))
+      expect(market_other_fees_none.seller_net_percent).to eq(BigDecimal("1.00")-BigDecimal("0.03"))
 
       market_other_fees_seller.local_orbit_seller_fee = 4
-      expect(market_other_fees_seller.seller_net_percent).to eq(BigDecimal.new("1.00")-BigDecimal.new("0.029")-BigDecimal.new("0.05"))
+      expect(market_other_fees_seller.seller_net_percent).to eq(BigDecimal("1.00")-BigDecimal("0.029")-BigDecimal("0.05"))
 
       market_other_fees_none.market_seller_fee = 2
-      expect(market_other_fees_none.seller_net_percent).to eq(BigDecimal.new("1.00")-BigDecimal.new("0.04"))
+      expect(market_other_fees_none.seller_net_percent).to eq(BigDecimal("1.00")-BigDecimal("0.04"))
     end
   end
 

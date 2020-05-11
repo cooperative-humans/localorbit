@@ -9,4 +9,4 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-LocalOrbit::Application.config.secret_key_base = ENV.fetch('SECRET_TOKEN')
+LocalOrbit::Application.config.secret_key_base = ENV.fetch('RAILS_SECRET_KEY_BASE')

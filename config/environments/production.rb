@@ -21,7 +21,7 @@ Rails.application.configure do
   # config.action_dispatch.rack_cache = true
 
   # Disable Rails's static asset server (Apache or nginx will already do this).
-  config.serve_static_files = false
+  config.serve_static_files = true
   config.static_cache_control = "public, max-age=31536000"
 
   # Compress JavaScripts and CSS.
@@ -42,7 +42,7 @@ Rails.application.configure do
   config.action_dispatch.x_sendfile_header = 'X-Accel-Redirect' # for nginx
 
   # Set to :debug to see everything in the log.
-  config.log_level = :info
+  config.log_level = :debug
 
   # Prepend all log lines with the following tags.
   # config.log_tags = [ :subdomain, :uuid ]
@@ -81,7 +81,7 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   # SSL config
-  config.force_ssl = true
+  config.force_ssl = false
 
   config.action_mailer.default_url_options = {protocol: 'https', host: "app.#{ENV.fetch('DOMAIN')}"}
   config.action_mailer.delivery_method = :smtp

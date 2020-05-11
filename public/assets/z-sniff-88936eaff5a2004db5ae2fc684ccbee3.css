@@ -1,0 +1,4 @@
+/* line 2, /Users/ben/Projects/localOrbit/code-interim/app/assets/stylesheets/z-sniff.css.scss */
+body.os-android .print-button {
+  display: none;
+}

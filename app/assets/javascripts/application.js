@@ -31,21 +31,20 @@
 
 //= require components
 //= require reflux.min
-//= require froala_editor.min
 //= require fSelect
 //= require BpTspSolver
 //= require tsp.js.erb
-//
-//= require plugins/block_styles.min.js
-//= require plugins/colors.min.js
-//= require plugins/entities.min.js
-//= require plugins/font_family.min.js
-//= require plugins/font_size.min.js
-//= require plugins/inline_styles.min.js
-//= require plugins/lists.min.js
-//= require plugins/media_manager.min.js
-//= require plugins/tables.min.js
-//= require plugins/urls.min.js
+
+//# require plugins/block_styles.min.js
+//# require plugins/colors.min.js
+//# require plugins/entities.min.js
+//# require plugins/font_family.min.js
+//# require plugins/font_size.min.js
+//# require plugins/inline_styles.min.js
+//# require plugins/lists.min.js
+//# require plugins/media_manager.min.js
+//# require plugins/tables.min.js
+//# require plugins/urls.min.js
 //= require s3_direct_upload
 //= require jSignature.min.js
 

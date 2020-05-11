@@ -3,7 +3,7 @@
 module ProductImport::Schemas
 
 
-  CANONICAL = RSchema.schema {{
+  CANONICAL = RSchema.schema {{ #
     'product_code' => maybe(either(Integer,String)),
     'name' => String,
 
@@ -15,14 +15,14 @@ module ProductImport::Schemas
     # e.g. 12.34
 
     'unit' => either(Integer,String),
-    _?('uom') => String,
+    optional('uom') => String,
 
-    _?('unit_description') => maybe(String),
-    _?('short_description') => String,
-    _?('long_description') => String,
-    _?('organization') => String,
-    _?('break_case') => String,
-    _?('source_data') => Hash,
+    optional('unit_description') => maybe(String),
+    optional('short_description') => String,
+    optional('long_description') => String,
+    optional('organization') => String,
+    optional('break_case') => String,
+    optional('source_data') => Hash,
   }}
 
 
@@ -33,6 +33,3 @@ module ProductImport::Schemas
     'category_id' => Integer,
   )
 end
-
-
-

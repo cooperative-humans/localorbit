@@ -32,7 +32,7 @@ describe ProductImport::ProductLoader do
     expect(first_product.organization_id).to eq(seller_org.id)
     expect(first_product).to be_persisted
 
-    expect(price_prod.sale_price).to eq(BigDecimal.new("25.24"))
+    expect(price_prod.sale_price).to eq(BigDecimal("25.24"))
     expect(price_prod.min_quantity).to eq(1)
     expect(price_prod).to be_persisted
 
@@ -45,7 +45,7 @@ describe ProductImport::ProductLoader do
     expect(external_product.batch_updated_at).to be_within(10.seconds).of(Time.now)
     expect(external_product).to be_persisted
     expect(first_product.name).to eq(first_product.general_product.name)
-    
+
   end
 
   it "updates products properly" do
@@ -120,7 +120,7 @@ describe ProductImport::ProductLoader do
     expect(first_product.organization_id).to eq(original_ep.organization_id)
     expect(first_product).to be_persisted
 
-    expect(price_prod.sale_price).to eq(BigDecimal.new("25.24"))
+    expect(price_prod.sale_price).to eq(BigDecimal("25.24"))
     expect(price_prod.min_quantity).to eq(1)
     expect(price_prod).to be_persisted
     expect(price_prod.id).to eq(original_ep.product.prices.first.id)
@@ -149,7 +149,7 @@ describe ProductImport::ProductLoader do
         "long_description" => "Test long",
         "contrived_key" => "anactualsha1",
         "source_data" => {"foo"=>"bar"},
-      }, 
+      },
       { "category_id" => cat1.id,
         "organization_id" => seller_org.id,
         "unit_id" => unit2.id,
@@ -192,11 +192,11 @@ describe ProductImport::ProductLoader do
     first_product = original_ep.product.reload
     price_prod = first_product.prices.first
     lot_prod = first_product.lots.first
-    external_product = first_product.external_product 
+    external_product = first_product.external_product
 
     expect(external_product.batch_updated_at).to be_within(10.seconds).of(Time.now)
 
-    expect(price_prod.sale_price).to eq(BigDecimal.new("25.24"))
+    expect(price_prod.sale_price).to eq(BigDecimal("25.24"))
     expect(price_prod.min_quantity).to eq(1)
     expect(price_prod).to be_persisted
 
@@ -206,7 +206,7 @@ describe ProductImport::ProductLoader do
   end
 
   it "should soft delete products that no longer exist" do
-  
+
     dropped_ep = create :external_product, contrived_key: "anotheractualsha1"
     data = [{
         "category_id" => cat1.id,
@@ -229,7 +229,7 @@ describe ProductImport::ProductLoader do
 
 
   it "should undelete products that no longer exist" do
-  
+
     product = create :product, deleted_at: Time.now
     dropped_ep = create :external_product, contrived_key: "anactualsha1", product: product
 

@@ -26,9 +26,9 @@ class ApplyDiscountToAddedOrderItems
       limit = (curr_discount - discount_value).abs * 100
       items = order.items.sort {|a, b| b.discount <=> a.discount }[0, limit]
       if curr_discount > discount_value
-        items.each {|i| i.decrement(discount_field, BigDecimal.new("0.01")) }
+        items.each {|i| i.decrement(discount_field, BigDecimal("0.01")) }
       else
-        items.each {|i| i.increment(discount_field, BigDecimal.new("0.01")) }
+        items.each {|i| i.increment(discount_field, BigDecimal("0.01")) }
       end
     end
   end

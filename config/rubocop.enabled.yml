@@ -456,7 +456,7 @@ Lint/AssignmentInCondition:
   Enabled: true
 
 Lint/BigDecimalNew:
-  Description: '`BigDecimal.new()` is deprecated. Use `BigDecimal()` instead.'
+  Description: '`BigDecimal()` is deprecated. Use `BigDecimal()` instead.'
   Enabled: true
 
 Lint/BooleanSymbol:
