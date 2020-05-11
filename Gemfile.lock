@@ -8,12 +8,6 @@ GIT
       nokogiri (>= 1.3.3)
 
 GIT
-  remote: https://github.com/dcrosby42/tabulator.git
-  revision: aa3d14ea734979580dae3c6878a83a6a80643678
-  specs:
-    tabulator (1.0.0)
-
-GIT
   remote: https://github.com/sj26/rspec_junit_formatter.git
   revision: d99ef7d70a7d4a1e978d56ae7ad38835bace53e7
   specs:
@@ -1334,9 +1328,9 @@ GEM
     notiffany (0.1.3)
       nenv (~> 0.1)
       shellany (~> 0.0)
-    oauth2 (1.4.4)
-      faraday (>= 0.8, < 2.0)
-      jwt (>= 1.0, < 3.0)
+    oauth2 (1.4.0)
+      faraday (>= 0.8, < 0.13)
+      jwt (~> 1.0)
       multi_json (~> 1.3)
       multi_xml (~> 0.5)
       rack (>= 1.2, < 3)
@@ -1454,19 +1448,15 @@ GEM
       parser (~> 2.2, >= 2.2.2.5)
       private_attr (~> 1.1)
       rainbow (~> 2.0)
-      unparser (~> 0.2.2)
-    regexp_parser (1.7.0)
-    request_store (1.5.0)
-      rack (>= 1.4)
-    responders (2.4.1)
-      actionpack (>= 4.2.0, < 6.0)
-      railties (>= 4.2.0, < 6.0)
-    rollbar (2.25.0)
-    rspec (3.9.0)
-      rspec-core (~> 3.9.0)
-      rspec-expectations (~> 3.9.0)
-      rspec-mocks (~> 3.9.0)
-    rspec-collection_matchers (1.2.0)
+    request_store (1.0.8)
+    responders (1.1.2)
+      railties (>= 3.2, < 4.2)
+    rollbar (2.23.2)
+    rspec (3.8.0)
+      rspec-core (~> 3.8.0)
+      rspec-expectations (~> 3.8.0)
+      rspec-mocks (~> 3.8.0)
+    rspec-collection_matchers (1.0.0)
       rspec-expectations (>= 2.99.0.beta1)
     rspec-core (3.9.2)
       rspec-support (~> 3.9.3)

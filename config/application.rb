@@ -37,10 +37,10 @@ module LocalOrbit
       DeviseController.skip_before_action :ensure_user_not_suspended
     end
 
-    config.middleware.use PDFKit::Middleware, {}, only: [%r[/admin/invoices], %r[/admin/consignment_receipts], %r[/admin/labels]]
+    config.font_assets.origin = "*"
+
+    config.middleware.use PDFKit::Middleware, {}, only: [%r[/admin/invoices], %r[/admin/labels]]
 
     config.browserify_rails.commandline_options = "--transform reactify --extension=\".jsx\""
-
-    config.active_record.raise_in_transactional_callbacks = true
   end
 end
