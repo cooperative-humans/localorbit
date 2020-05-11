@@ -1,8 +1,8 @@
 require 'spec_helper'
 
 describe "'Regexp' extension to RSchema" do
-  let(:schema) do 
-    RSchema.schema { 
+  let(:schema) do
+    RSchema.schema { #
       /foo/
     }
   end

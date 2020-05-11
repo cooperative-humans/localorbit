@@ -11,7 +11,7 @@
   <table class="sort-able">
     <thead class="stick-able">
     <% if current_user.admin? %>
-      <%= content_tag :th, sort_link(@q, :market, "Market") %>
+      <%= content_tag :th, sort_link(@q, :market, "Market", hide_indicator: true) %>
       <% end %>
       <%= content_tag :th, sort_link(@q, :order_number, "Order #") %>
       <%= content_tag :th, sort_link(@q, :placed_at, "Order Date") %>
@@ -19,7 +19,7 @@
       <%= content_tag :th, sort_link(@q, :total_cost, "Amount Owed") %>
       <%= content_tag :th, sort_link(@q, :organization_name, "Buyer") %>
       <th>Delivery</th>
-      <%= content_tag :th, sort_link(@q, :payment_status, "Payment Status") %>
+      <%= content_tag :th, sort_link(@q, :payment_status, "Payment Status", hide_indicator: true) %>
     </thead>
     <tbody>
       <%

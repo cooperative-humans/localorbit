@@ -26,6 +26,7 @@ class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
+  skip_before_action :verify_authenticity_token
 
   rescue_from ActiveRecord::RecordNotFound, with: :render_404
 
@@ -150,7 +151,7 @@ class ApplicationController < ActionController::Base
   end
 
   def market_for_current_subdomain(scope=Market)
-    subdomain = request.subdomains(Figaro.env.domain.count(".")).first
+    subdomain = request.subdomains(ENV.fetch('DOMAIN').count(".")).first
     scope.find_by(subdomain: SimpleIDN.to_unicode(subdomain))
   end
 
@@ -165,7 +166,7 @@ class ApplicationController < ActionController::Base
   end
 
   def on_main_domain?
-    request.host == Figaro.env.domain || request.host == "app.#{Figaro.env.domain}"
+    request.host == ENV.fetch('DOMAIN') || request.host == "app.#{ENV.fetch('DOMAIN')}"
   end
 
   def adding_items_to_existing_order?
@@ -299,6 +300,7 @@ class ApplicationController < ActionController::Base
   end
 
   def require_market_open
+    return if current_user.try(:market_manager?)
     render "shared/market_closed" if current_market.closed? && session[:order_id].nil?
   end
 
@@ -340,8 +342,8 @@ class ApplicationController < ActionController::Base
   end
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.for(:accept_invitation).concat [:name, :email]
-    devise_parameter_sanitizer.for(:account_update).concat [:name]
+    devise_parameter_sanitizer.permit(:accept_invitation, keys: [:name, :email])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:name])
   end
 
   def redirect_to_url

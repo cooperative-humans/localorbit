@@ -5,7 +5,7 @@ module PaymentProvider
     CreditCardFeeStructure = SchemaValidation.validate!(FeeEstimator::Schema::BasePlusRate,
       style: :base_plus_rate,
       base:  30,
-      rate:  BigDecimal.new("0.029") #{}"0.029".to_d, # 2.9% of total
+      rate:  BigDecimal("0.029") #{}"0.029".to_d, # 2.9% of total
     )
 
     TransferSchedule = {
@@ -15,28 +15,28 @@ module PaymentProvider
     }
 
     module CardSchema
-      Base = RSchema.schema {{
+      Base = RSchema.schema {{ #
         name: String,
         bank_name: String,
         account_type: String,
         last_four: String,
         expiration_month: String,
         expiration_year: String,
-        _?(:notes) => String,
+        optional(:notes) => String,
       }}
 
-      SubmittedParams = RSchema.schema do
+      SubmittedParams = RSchema.schema do #
         Base.merge(
-          _?(:id) => String,
-          _?(:save_for_future) => String,
+          optional(:id) => String,
+          optional(:save_for_future) => String,
           :stripe_tok => String
         )
       end
 
-      NewParams = RSchema.schema do
+      NewParams = RSchema.schema do #
         Base.merge(
-          _?(:stripe_id) => String,
-          _?(:deleted_at) => Time
+          optional(:stripe_id) => String,
+          optional(:deleted_at) => Time
         )
       end
     end

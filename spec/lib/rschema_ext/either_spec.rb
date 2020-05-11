@@ -4,8 +4,8 @@ describe "'Either' extension to RSchema" do
   let(:organization) { Organization.new }
   let(:market) { Market.new }
 
-  let(:schema) do 
-    RSchema.schema { 
+  let(:schema) do
+    RSchema.schema { #
       either(Organization,Market, { type: String, id: Integer })
     }
   end

@@ -4,13 +4,13 @@ module LargestRemainder
 
     ItemId = Object
 
-    Args = RSchema.schema {{
+    Args = RSchema.schema {{ #
       to_distribute: Cents,
       total:         Cents,
       items:         hash_of(ItemId => Cents)
     }}
 
-    ItemShares = RSchema.schema { hash_of(ItemId => Cents) }
+    ItemShares = RSchema.schema { hash_of(ItemId => Cents) } #
   end
 
   class << self
@@ -43,7 +43,7 @@ module LargestRemainder
       # If total is given as 0, set things up to result in even distribution.
       # (Total is n if n items, each item resets to value 1)
       if total == 0
-        total = items.count 
+        total = items.count
         items.each do |id,value|
           items[id] = 1 # discarding 'value' here in favor of even distribution
         end
@@ -64,7 +64,7 @@ module LargestRemainder
 
       # In order of largest to least remainder, sprinkle on the remainder:
       sorted_items = items.sort_by {|item| item[:remainder]}.reverse
-      remaining_to_distribute.times do 
+      remaining_to_distribute.times do
         item = sorted_items.shift
         item[:share] += 1
       end

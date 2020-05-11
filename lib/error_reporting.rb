@@ -8,15 +8,15 @@ module ErrorReporting
       application_error_message: String
     }
 
-    ExceptionInfo = RSchema.schema {{
+    ExceptionInfo = RSchema.schema {{ #
       class_name: String,
       message: String,
       origin: maybe(BacktraceItem)
     }}
-    RSchema.schema do
+    RSchema.schema do #
       # In order to define ExceptionInfo in terms of ExceptionInfo,
       # we have to add it to the schema AFTER the fact:
-      ExceptionInfo[_?(:cause)] = maybe(ExceptionInfo)
+      ExceptionInfo[optional(:cause)] = maybe(ExceptionInfo)
     end
   end
 
@@ -89,9 +89,8 @@ module ErrorReporting
       if e.cause
         exception_info[:cause] = exception_to_info(e.cause)
       end
-      
+
       SchemaValidation.validate!(Schema::ExceptionInfo, exception_info)
     end
   end
 end
-
